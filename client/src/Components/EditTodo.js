@@ -1,7 +1,9 @@
 import React, { Fragment, useState } from "react";
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const EditTodo = ({ todo }) => {
   const [description, setDescription] = useState(todo.description);
+  
 
   //edit description function
 
@@ -15,11 +17,20 @@ const EditTodo = ({ todo }) => {
         body: JSON.stringify(body),
       });
 
-      window.location = "/";
+      //updateDescription(description).then(() => Navigate('/todos'));
+    
     } catch (err) {
       console.error(err.message);
+      // send warning to the user
     }
   };
+
+    const saveButton = () => {
+      updateDescription(description).then(() => Navigate('/todos'));
+    } 
+
+
+
 
   return (
     <Fragment>
@@ -32,9 +43,6 @@ const EditTodo = ({ todo }) => {
         Edit
       </button>
 
-      {/* 
-        id = id10
-      */}
       <div
         className="modal"
         id={`id${todo.id}`}
@@ -68,7 +76,8 @@ const EditTodo = ({ todo }) => {
                 type="button"
                 className="btn btn-warning"
                 data-dismiss="modal"
-                onClick={(e) => updateDescription(e)}
+                onClick={(e) => saveButton(e) }
+                
               >
                 Edit
               </button>
@@ -89,3 +98,4 @@ const EditTodo = ({ todo }) => {
 };
 
 export default EditTodo;
+

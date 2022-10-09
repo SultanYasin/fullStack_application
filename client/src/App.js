@@ -2,16 +2,16 @@ import React, { Fragment } from "react";
 import "./App.css";
 
 //components
+ import LoginButton from "./Components/Auth/LoginButton";
+import LogoutButton from "./Components/Auth/LogoutButton";
 
-import InputTodo from "./Components/InputTodo";
-import ListTodos from "./Components/ListTodo";
 
 function App() {
   return (
     <Fragment>
       <div className="container">
-        <InputTodo />
-        <ListTodos />
+        <LoginButton />
+        <LogoutButton />
       </div>
     </Fragment>
   );
